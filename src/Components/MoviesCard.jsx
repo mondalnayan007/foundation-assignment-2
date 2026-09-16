@@ -1,17 +1,17 @@
 import React from 'react';
 
 const MoviesCard = ({ show }) => {
-  // ডাটা আনপ্যাক বা Destructuring (সুরক্ষার জন্য ডিফল্ট ভ্যালুসহ)
+  
   const { name, genres, rating, image, summary, premiered } = show || {};
 
-  // HTML ট্যাগ (যেমন <p>, <b>) রিমুভ করে ক্লিন টেক্সট বের করার পদ্ধতি
+  
   const cleanSummary = summary ? summary.replace(/<[^>]*>?/gm, '') : 'No description available.';
 
   return (
     <div className="bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:border-red-600 transition-all duration-300 hover:scale-105 flex flex-col justify-between group">
       
       {/* Movie Image Container */}
-      <div className="relative overflow-hidden aspect-[2/3]">
+      <div className="relative  aspect-[2/3]">
         <img
           src={image?.medium || image?.original || 'https://via.placeholder.com/300x450?text=No+Image'}
           alt={name}
