@@ -22,7 +22,7 @@ const Home = () => {
             <div className='h-2/6'><Hero></Hero></div>
            <div className='bg-black'>
             <h1 className='text-3xl font-bold text-[#C11406] py-3'>Featured Movies ---</h1>
-             <div className='grid grid-cols-3 gap-4'>
+             <div className='grid grid-cols-4 gap-4 px-8 py-5'>
                 {
                     showsData.slice(0, 12).map(show => <MoviesCard show={show}></MoviesCard>)
                 }
