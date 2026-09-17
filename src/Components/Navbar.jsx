@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 
 const Navbar = () => {
   return (
@@ -31,10 +31,10 @@ const Navbar = () => {
         </div>
 
         {/* MovieBuzz Logo */}
-        <a href="#" className="btn btn-ghost text-2xl font-bold tracking-wide hover:bg-transparent">
+        <Link to={'/'} className=" text-2xl font-bold tracking-wide hover:bg-transparent">
           <span className="text-red-600">Movie</span>
           <span className="text-yellow-400">Buzz</span>
-        </a>
+        </Link>
       </div>
 
       {/* Navbar Center: Desktop Navigation */}

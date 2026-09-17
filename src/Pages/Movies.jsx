@@ -5,12 +5,12 @@ import MovieModal from '../Components/MovieModal';
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [activeSearch, setActiveSearch] = useState(''); // বাটনে ক্লিকের পর ফিল্টার করার জন্য
+  const [activeSearch, setActiveSearch] = useState('');
   const [visibleCount, setVisibleCount] = useState(12);
   const [loading, setLoading] = useState(true);
   const [selectedShow, setSelectedShow] = useState(null);
 
-  // ১. প্রাথমিক ডাটা ফেচিং
+ 
   useEffect(() => {
     fetchMovies();
   }, []);
@@ -35,19 +35,19 @@ const Movies = () => {
     
   }
 
-  // ২. শুধুমাত্র 'Search' বাটনে ক্লিক করলে ফিল্টার ট্রিগার হবে
+  
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     setActiveSearch(searchTerm);
-    setVisibleCount(12); // নতুন সার্চ দিলে দৃশ্যমান কার্ড রিসেট হবে
+    setVisibleCount(12); 
   };
 
-  // ৩. টাইটেলে সার্চ টার্মের মিল অনুযায়ী ফিল্টারিং (Case-Insensitive Partial Match)
+ 
   const filteredMovies = movies.filter((movie) =>
     movie.name?.toLowerCase().includes(activeSearch.toLowerCase().trim())
   );
 
-  // ৪. Explore More ক্লিকে নতুন ১২টি কার্ড যুক্ত হবে
+  
   const handleExploreMore = () => {
     setVisibleCount((prevCount) => prevCount + 12);
   };
@@ -56,7 +56,7 @@ const Movies = () => {
     <section className="bg-slate-950 text-white min-h-screen py-10 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         
-        {/* Header & Search Section */}
+        
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
           <div>
             <h2 className="text-3xl font-extrabold tracking-wide">
@@ -67,11 +67,11 @@ const Movies = () => {
             </p>
           </div>
 
-          {/* Search Form */}
+          
           <form onSubmit={handleSearchSubmit} className="relative w-full md:w-96 flex gap-2">
             <input
               type="text"
-              placeholder="Search movies (e.g. 'con')..."
+              placeholder="🔍 Search movies....."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full bg-slate-900 text-white placeholder-slate-500 text-sm rounded-xl px-4 py-3 border border-slate-800 focus:outline-none focus:border-red-600 transition duration-200"
@@ -85,7 +85,7 @@ const Movies = () => {
           </form>
         </div>
 
-        {/* Loading Skeleton */}
+        
         {loading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {[...Array(8)].map((_, i) => (
@@ -96,7 +96,7 @@ const Movies = () => {
           <>
             {filteredMovies.length > 0 ? (
               <>
-                {/* Movie Grid Section (4 Columns) */}
+                
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                   {filteredMovies.slice(0, visibleCount).map((show) => (
                     <MoviesCard key={show.id} show={show}
@@ -104,14 +104,14 @@ const Movies = () => {
                   ))}
                 </div>
 
-                {/* Clean Explore More Button */}
+                
                 {visibleCount < filteredMovies.length && (
                   <div className="text-center mt-12">
                     <button
                       onClick={handleExploreMore}
                       className="bg-slate-900 hover:bg-red-600 border border-slate-800 hover:border-red-600 text-white font-bold px-8 py-3.5 rounded-2xl transition duration-300 transform hover:scale-105 shadow-xl active:scale-95 inline-flex items-center gap-2"
                     >
-                      <span>Explore More</span>
+                      <span>Explore More +</span>
                       
                     </button>
                   </div>

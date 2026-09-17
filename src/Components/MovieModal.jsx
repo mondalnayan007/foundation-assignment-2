@@ -15,7 +15,7 @@ const MovieModal = ({ show, onClose }) => {
     language,
     runtime,
     network,
-    officialSite,
+    url,
     schedule,
   } = show;
 
@@ -44,7 +44,7 @@ const MovieModal = ({ show, onClose }) => {
         </button>
 
         {/* Left Side: Poster Image */}
-        <div className="w-full md:w-5/12 h-64 md:h-auto relative bg-slate-950 flex-shrink-0">
+        <div className="w-full md:w-5/12 h-80 md:h-auto relative bg-slate-950 flex-shrink-0">
           <img
             src={image?.original || image?.medium || 'https://via.placeholder.com/300x450?text=No+Image'}
             alt={name}
@@ -133,15 +133,15 @@ const MovieModal = ({ show, onClose }) => {
           </div>
 
           {/* Official Site Button */}
-          {officialSite && (
+          {url && (
             <div className="pt-2">
               <a
-                href={officialSite}
+                href={url}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-block bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-5 py-2.5 rounded-xl transition duration-200 shadow-md"
               >
-                Visit Official Site ↗
+                Watch Now ↗
               </a>
             </div>
           )}
