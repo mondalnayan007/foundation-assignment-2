@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router';
 
 const Navbar = () => {
   return (
@@ -14,18 +15,18 @@ const Navbar = () => {
           <ul
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-slate-900 border border-slate-800 rounded-xl z-50 mt-3 w-52 p-3 shadow-2xl space-y-1">
-            <li><a href="#" className="hover:text-red-500">Home</a></li>
+            <li><NavLink to={'/'} className="hover:text-red-500 transition">Home</NavLink></li>
             <li>
-              <span className="text-slate-400 font-medium">Categories</span>
+              <span className="text-slate-400 font-medium">Geners</span>
               <ul className="p-2 border-l border-slate-800 ml-2 space-y-1">
-                <li><a href="#" className="hover:text-red-500">Action</a></li>
-                <li><a href="#" className="hover:text-red-500">Comedy</a></li>
-                <li><a href="#" className="hover:text-red-500">Drama</a></li>
-                <li><a href="#" className="hover:text-red-500">Sci-Fi</a></li>
+                <li><NavLink to={'/action'} className="hover:text-red-500 transition">Action</NavLink></li>
+                <li><NavLink to={'/comedy'} className="hover:text-red-500 transition">Comedy</NavLink></li>
+                <li><NavLink to={'/drama'} className="hover:text-red-500 transition">Drama</NavLink></li>
+                <li><NavLink to={'/sci-fi'} className="hover:text-red-500 transition">Sci-Fi</NavLink></li>
               </ul>
             </li>
-            <li><a href="#" className="hover:text-red-500">Movies</a></li>
-            <li><a href="#" className="hover:text-red-500">TV Shows</a></li>
+            <li><NavLink to={'/movies'} className="hover:text-red-500 transition">Movies</NavLink></li>
+            <li><NavLink to={'/shows'} className="hover:text-red-500 transition">TV Shows</NavLink></li>
           </ul>
         </div>
 
@@ -39,20 +40,20 @@ const Navbar = () => {
       {/* Navbar Center: Desktop Navigation */}
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 font-medium space-x-1">
-          <li><a href="#" className="hover:text-red-500 transition">Home</a></li>
+          <li><NavLink to={'/'} className="hover:text-red-500 transition">Home</NavLink></li>
           <li>
             <details>
               <summary className="hover:text-red-500 transition">Genres</summary>
               <ul className="p-2 bg-slate-900 border border-slate-800 rounded-xl w-44 z-50 shadow-xl space-y-1">
-                <li><a href="#" className="hover:text-red-500">Action</a></li>
-                <li><a href="#" className="hover:text-red-500">Comedy</a></li>
-                <li><a href="#" className="hover:text-red-500">Drama</a></li>
-                <li><a href="#" className="hover:text-red-500">Sci-Fi</a></li>
+                <li><NavLink to={'/action'} className="hover:text-red-500 transition">Action</NavLink></li>
+                <li><NavLink to={'/comedy'} className="hover:text-red-500 transition">Comedy</NavLink></li>
+                <li><NavLink to={'/drama'} className="hover:text-red-500 transition">Drama</NavLink></li>
+                <li><NavLink to={'/sci-fi'} className="hover:text-red-500 transition">Sci-Fi</NavLink></li>
               </ul>
             </details>
           </li>
-          <li><a href="#" className="hover:text-red-500 transition">Movies</a></li>
-          <li><a href="#" className="hover:text-red-500 transition">TV Shows</a></li>
+          <li><NavLink to={'/movies'} className="hover:text-red-500 transition">Movies</NavLink></li>
+          <li><NavLink to={'/shows'} className="hover:text-red-500 transition">TV Shows</NavLink></li>
         </ul>
       </div>
 

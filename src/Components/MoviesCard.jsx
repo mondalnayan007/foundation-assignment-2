@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const MoviesCard = ({ show }) => {
+const MoviesCard = ({ show,handleDetails }) => {
+
+
   const { name, genres, rating, image, summary, premiered } = show || {};
+  
 
   // Clean HTML tags from API summary
   const cleanSummary = summary ? summary.replace(/<[^>]*>?/gm, '') : 'No description available.';
@@ -12,7 +15,7 @@ const MoviesCard = ({ show }) => {
       
       {/* 1. Base Poster Image (Google/Netflix Aspect Fit) */}
       <img
-        src={image?.original || image?.medium || 'https://via.placeholder.com/300x450?text=No+Poster'}
+        src={  image?.medium || 'https://via.placeholder.com/300x450?text=No+Poster'}
         alt={name}
         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
       />
@@ -69,7 +72,9 @@ const MoviesCard = ({ show }) => {
 
           {/* Action Buttons */}
           <div className="pt-2 ">
-            <button className=" w-full bg-red-600 hover:bg-red-700 active:scale-95 text-white text-xs font-bold py-2.5 rounded-xl transition duration-200 shadow-lg shadow-red-600/30 flex items-center justify-center gap-1.5">
+            <button
+            onClick={()=>handleDetails(show)}
+             className=" w-full bg-red-600 hover:bg-red-700 active:scale-95 text-white text-xs font-bold py-2.5 rounded-xl transition duration-200 shadow-lg shadow-red-600/30 flex items-center justify-center gap-1.5">
               See Details
             </button>
             

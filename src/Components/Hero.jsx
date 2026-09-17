@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const Hero = () => {
   return (
@@ -25,12 +26,12 @@ const Hero = () => {
         </p>
 
         <div>
-          <a
-            href="#movies" 
+          <Link
+             to={'/movies'}
             className="bg-red-600 hover:bg-red-700 text-white text-lg font-semibold px-8 py-3 rounded-full transition duration-300 ease-in-out shadow-lg transform hover:scale-105 inline-block"
           >
             Explore Movies
-          </a>
+          </Link>
         </div>
       </div>
     </div>
