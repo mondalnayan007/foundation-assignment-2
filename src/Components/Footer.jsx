@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const Footer = () => {
   return (
@@ -21,10 +22,11 @@ const Footer = () => {
           <div>
             <h4 className="text-white text-sm font-semibold uppercase tracking-wider mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="hover:text-red-500 transition">Home</a></li>
-              <li><a href="#" className="hover:text-red-500 transition">Movies</a></li>
-              <li><a href="#" className="hover:text-red-500 transition">TV Shows</a></li>
-              <li><a href="#" className="hover:text-red-500 transition">Trending</a></li>
+              <li><Link to={'/'} className="hover:text-red-500 transition">Home</Link></li>
+              <li><Link to={'/movies'} className="hover:text-red-500 transition">Movies</Link></li>
+              <li><Link to={'/shows'} className="hover:text-red-500 transition">TV Shows</Link></li>
+              <li><Link to={'/trending'} className="hover:text-red-500 transition">Trending</Link></li>
+             
             </ul>
           </div>
 
@@ -32,10 +34,11 @@ const Footer = () => {
           <div>
             <h4 className="text-white text-sm font-semibold uppercase tracking-wider mb-4">Genres</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="hover:text-red-500 transition">Action</a></li>
-              <li><a href="#" className="hover:text-red-500 transition">Comedy</a></li>
-              <li><a href="#" className="hover:text-red-500 transition">Drama</a></li>
-              <li><a href="#" className="hover:text-red-500 transition">Sci-Fi</a></li>
+              <li><Link to={'/action'} className="hover:text-red-500 transition">Action</Link></li>
+              <li><Link to={'/comedy'} className="hover:text-red-500 transition">Comedy</Link></li>
+              <li><Link to={'/drama'} className="hover:text-red-500 transition">Drama</Link></li>
+              <li><Link to={'/sci-fi'} className="hover:text-red-500 transition">Sci-Fi</Link></li>
+            
             </ul>
           </div>
 
@@ -61,7 +64,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-slate-900 pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
-          <p>&copy; {new Date().getFullYear()} MovieBuzz. All rights reserved.</p>
+          <p>&copy; 2026 MovieBuzz. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="hover:text-slate-400 transition">Privacy Policy</a>
             <a href="#" className="hover:text-slate-400 transition">Terms of Service</a>

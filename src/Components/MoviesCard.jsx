@@ -83,7 +83,7 @@ const MoviesCard = ({ show, handleDetails }) => {
           <div className="pt-2">
             <button
               onClick={() => handleDetails(show)}
-              className="w-full bg-red-600 hover:bg-red-700 active:scale-95 text-white text-xs font-bold py-2.5 rounded-xl transition duration-200 shadow-lg shadow-red-600/30 flex items-center justify-center gap-1.5 cursor-pointer"
+              className="w-full bg-red-600 cursor-pointer hover:bg-red-700 active:scale-95 text-white text-xs font-bold py-2.5 rounded-xl transition duration-200 shadow-lg shadow-red-600/30 flex items-center justify-center gap-1.5 cursor-pointer"
             >
               See Details
             </button>

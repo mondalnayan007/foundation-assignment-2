@@ -12,6 +12,7 @@ const Movies = () => {
 
  
   useEffect(() => {
+    
     fetchMovies();
   }, []);
 
