@@ -18,7 +18,8 @@
 ## 🛠️ Tech Stack
 
 - **Frontend:** React.js
-- **Styling:** Tailwind CSS
+- **Styling:** Tailwind CSS and DaisyUI
+- **API:** TVMaze
 - **Deployment:** Vercel
 
 ---

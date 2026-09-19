@@ -37,7 +37,7 @@ const ErrorPage = () => {
             Looks Like You're Lost
           </h2>
           <p className="text-slate-400 text-xs md:text-sm leading-relaxed max-w-md mx-auto">
-            যে মুভি বা পেজটি খুঁজছেন তা আমাদের ক্যাটালগে নেই অথবা মুছে ফেলা হয়েছে।
+           Page Not Found 😭 Goto the previous page ro Homepage !!!!
           </p>
         </div>
 

@@ -5,22 +5,22 @@ import MovieModal from '../Components/MovieModal';
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [activeSearch, setActiveSearch] = useState('');
   const [visibleCount, setVisibleCount] = useState(12);
   const [loading, setLoading] = useState(true);
   const [selectedShow, setSelectedShow] = useState(null);
 
- 
   useEffect(() => {
-    
     fetchMovies();
   }, []);
 
+  
   const fetchMovies = async () => {
     setLoading(true);
+
     try {
       const response = await fetch('https://api.tvmaze.com/shows');
       const data = await response.json();
+
       setMovies(data);
     } catch (error) {
       console.error('Error fetching movies:', error);
@@ -30,25 +30,44 @@ const Movies = () => {
   };
 
   
-
-  const handleDetails =(show)=>{
-    setSelectedShow(show);
-    
-  }
-
-  
-  const handleSearchSubmit = (e) => {
+  const handleSearchSubmit = async (e) => {
     e.preventDefault();
-    setActiveSearch(searchTerm);
-    setVisibleCount(12); 
+
+    const query = searchTerm.trim();
+
+    
+    if (!query) {
+      fetchMovies();
+      return;
+    }
+
+    setLoading(true);
+    setVisibleCount(12);
+
+    try {
+      const response = await fetch(
+        `https://api.tvmaze.com/search/shows?q=${(query)}`
+      );
+
+      const data = await response.json();
+
+     
+
+      const searchResults = data.map((item) => item.show);
+
+      setMovies(searchResults);
+    } catch (error) {
+      console.error('Error searching movies:', error);
+      setMovies([]);
+    } finally {
+      setLoading(false);
+    }
   };
 
- 
-  const filteredMovies = movies.filter((movie) =>
-    movie.name?.toLowerCase().includes(activeSearch.toLowerCase().trim())
-  );
+  const handleDetails = (show) => {
+    setSelectedShow(show);
+  };
 
-  
   const handleExploreMore = () => {
     setVisibleCount((prevCount) => prevCount + 12);
   };
@@ -56,20 +75,27 @@ const Movies = () => {
   return (
     <section className="bg-slate-950 text-white min-h-screen py-10 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
-        
+
         
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
+
           <div>
             <h2 className="text-3xl font-extrabold tracking-wide">
-              Explore <span className="text-red-600">Movies</span> & <span className="text-yellow-400">Shows</span>
+              Explore{' '}
+              <span className="text-red-600">Movies</span> &{' '}
+              <span className="text-yellow-400">Shows</span>
             </h2>
+
             <p className="text-slate-400 text-sm mt-1">
               Find your favorite blockbusters and trending TV series
             </p>
           </div>
 
-          
-          <form onSubmit={handleSearchSubmit} className="relative w-full md:w-96 flex gap-2">
+  
+          <form
+            onSubmit={handleSearchSubmit}
+            className="relative w-full md:w-96 flex gap-2"
+          >
             <input
               type="text"
               placeholder="🔍 Search movies....."
@@ -77,11 +103,13 @@ const Movies = () => {
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full bg-slate-900 text-white placeholder-slate-500 text-sm rounded-xl px-4 py-3 border border-slate-800 focus:outline-none focus:border-red-600 transition duration-200"
             />
+
             <button
               type="submit"
-              className="bg-red-600 hover:bg-red-700 active:scale-95 text-white font-semibold text-sm px-5 py-3 rounded-xl transition duration-200 shadow-md flex-shrink-0"
+              disabled={loading}
+              className="bg-red-600 hover:bg-red-700 disabled:opacity-50 active:scale-95 text-white font-semibold text-sm px-5 py-3 rounded-xl transition duration-200 shadow-md flex-shrink-0"
             >
-              Search
+              {loading ? 'Searching...' : 'Search'}
             </button>
           </form>
         </div>
@@ -90,49 +118,57 @@ const Movies = () => {
         {loading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {[...Array(8)].map((_, i) => (
-              <div key={i} className="h-[360px] bg-slate-900/60 rounded-2xl animate-pulse border border-slate-800/50" />
+              <div
+                key={i}
+                className="h-[360px] bg-slate-900/60 rounded-2xl animate-pulse border border-slate-800/50"
+              />
             ))}
           </div>
         ) : (
           <>
-            {filteredMovies.length > 0 ? (
+            {movies.length > 0 ? (
               <>
-                
+               
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                  {filteredMovies.slice(0, visibleCount).map((show) => (
-                    <MoviesCard key={show.id} show={show}
-                    handleDetails={handleDetails} />
+                  {movies.slice(0, visibleCount).map((show) => (
+                    <MoviesCard
+                      key={show.id}
+                      show={show}
+                      handleDetails={handleDetails}
+                    />
                   ))}
                 </div>
 
-                
-                {visibleCount < filteredMovies.length && (
+               
+                {visibleCount < movies.length && (
                   <div className="text-center mt-12">
                     <button
                       onClick={handleExploreMore}
                       className="bg-slate-900 hover:bg-red-600 border border-slate-800 hover:border-red-600 text-white font-bold px-8 py-3.5 rounded-2xl transition duration-300 transform hover:scale-105 shadow-xl active:scale-95 inline-flex items-center gap-2"
                     >
                       <span>Explore More +</span>
-                      
                     </button>
                   </div>
                 )}
               </>
             ) : (
               <div className="text-center py-20 text-slate-500">
-                <p className="text-lg">No movies or shows found with "{activeSearch}"!</p>
+                <p className="text-lg">
+                  No movies or shows found for "{searchTerm}"!
+                </p>
               </div>
             )}
           </>
         )}
-
       </div>
+
+    
       {selectedShow && (
-  <MovieModal 
-    show={selectedShow} 
-    onClose={() => setSelectedShow(null)} 
-  />
-)}
+        <MovieModal
+          show={selectedShow}
+          onClose={() => setSelectedShow(null)}
+        />
+      )}
     </section>
   );
 };

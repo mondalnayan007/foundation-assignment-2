@@ -4,7 +4,7 @@ import { Link, NavLink } from 'react-router';
 const Navbar = () => {
   return (
     <div className="navbar bg-slate-950 text-white border-b border-slate-800 px-4 md:px-8 sticky top-0 z-50">
-      {/* Navbar Start: Mobile Dropdown & Logo */}
+     
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden text-slate-300 hover:text-white">
@@ -30,14 +30,14 @@ const Navbar = () => {
           </ul>
         </div>
 
-        {/* MovieBuzz Logo */}
+        
         <Link to={'/'} className=" text-2xl font-bold tracking-wide hover:bg-transparent">
           <span className="text-red-600">Movie</span>
           <span className="text-yellow-400">Buzz</span>
         </Link>
       </div>
 
-      {/* Navbar Center: Desktop Navigation */}
+      
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 font-medium space-x-1">
           <li><NavLink to={'/'} className="hover:text-red-500 transition">Home</NavLink></li>
@@ -57,7 +57,7 @@ const Navbar = () => {
         </ul>
       </div>
 
-      {/* Navbar End: CTA Button */}
+    
       <div className="navbar-end">
         <a className="btn bg-red-600 hover:bg-red-700 text-white border-none min-h-0 h-10 px-5 rounded-lg font-semibold shadow-md transition">
           Sign In

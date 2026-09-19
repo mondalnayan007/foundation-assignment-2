@@ -19,23 +19,23 @@ const MovieModal = ({ show, onClose }) => {
     schedule,
   } = show;
 
-  // HTML ট্যাগ রিমুভ করা
+ 
   const cleanSummary = summary
     ? summary.replace(/<[^>]*>?/gm, '')
     : 'No detailed summary available for this show.';
 
   return (
-    /* Background Overlay with Blur & Close on Backdrop Click */
+    
     <div
       onClick={onClose}
       className="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-4 transition-all duration-300 animate-fadeIn"
     >
-      {/* Modal Box Container (Prevents closing when clicking inside content) */}
+      
       <div
         onClick={(e) => e.stopPropagation()}
         className="relative bg-slate-900 text-white w-full max-w-3xl rounded-2xl overflow-hidden border border-slate-800 shadow-2xl max-h-[90vh] flex flex-col md:flex-row"
       >
-        {/* Close (X) Button */}
+       
         <button
           onClick={onClose}
           className="absolute top-4 right-4 z-20 bg-black/60 hover:bg-red-600 text-white w-9 h-9 rounded-full flex items-center justify-center transition duration-200 border border-white/10"
@@ -43,7 +43,7 @@ const MovieModal = ({ show, onClose }) => {
           ✕
         </button>
 
-        {/* Left Side: Poster Image */}
+        
         <div className="w-full md:w-5/12 h-80 md:h-auto relative bg-slate-950 flex-shrink-0">
           <img
             src={image?.original || image?.medium || 'https://via.placeholder.com/300x450?text=No+Image'}
@@ -53,9 +53,9 @@ const MovieModal = ({ show, onClose }) => {
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-black/30 md:hidden" />
         </div>
 
-        {/* Right Side: Detailed Content */}
+       
         <div className="w-full md:w-7/12 p-6 overflow-y-auto space-y-4">
-          {/* Title & Status */}
+          
           <div>
             <div className="flex items-center gap-2 mb-1">
               <span className="bg-red-600/90 text-white text-[10px] font-bold px-2 py-0.5 rounded">
@@ -72,7 +72,7 @@ const MovieModal = ({ show, onClose }) => {
             </h2>
           </div>
 
-          {/* Quick Stats Grid */}
+         
           <div className="grid grid-cols-2 gap-2 bg-slate-950/60 p-3 rounded-xl border border-slate-800 text-xs">
             <div>
               <span className="text-slate-400">Rating:</span>{' '}
@@ -100,7 +100,7 @@ const MovieModal = ({ show, onClose }) => {
             </div>
           </div>
 
-          {/* Genres */}
+          
           {genres?.length > 0 && (
             <div className="flex flex-wrap gap-1.5">
               {genres.map((genre, idx) => (
@@ -114,7 +114,7 @@ const MovieModal = ({ show, onClose }) => {
             </div>
           )}
 
-          {/* Schedule Info */}
+          
           {schedule?.days?.length > 0 && (
             <p className="text-xs text-slate-400">
               📅 <span className="text-slate-300 font-medium">Schedule:</span>{' '}
@@ -122,7 +122,6 @@ const MovieModal = ({ show, onClose }) => {
             </p>
           )}
 
-          {/* Summary */}
           <div>
             <h4 className="text-xs uppercase font-semibold text-slate-400 tracking-wider mb-1">
               Overview
@@ -132,7 +131,7 @@ const MovieModal = ({ show, onClose }) => {
             </p>
           </div>
 
-          {/* Official Site Button */}
+          
           {url && (
             <div className="pt-2">
               <a

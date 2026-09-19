@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           
-          {/* Brand Info */}
+          
           <div className="space-y-4">
             <div className="text-2xl font-bold tracking-wide">
               <span className="text-red-600">Movie</span>
@@ -18,7 +18,7 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Quick Links */}
+          
           <div>
             <h4 className="text-white text-sm font-semibold uppercase tracking-wider mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm">
@@ -30,7 +30,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Categories */}
+         
           <div>
             <h4 className="text-white text-sm font-semibold uppercase tracking-wider mb-4">Genres</h4>
             <ul className="space-y-2 text-sm">
@@ -42,7 +42,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Newsletter / Social */}
+          
           <div>
             <h4 className="text-white text-sm font-semibold uppercase tracking-wider mb-4">Subscribe</h4>
             <p className="text-xs text-slate-400 mb-3">
@@ -62,7 +62,7 @@ const Footer = () => {
 
         </div>
 
-        {/* Bottom Bar */}
+        
         <div className="border-t border-slate-900 pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
           <p>&copy; 2026 MovieBuzz. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
